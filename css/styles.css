@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Lora:wght@400;700&display=swap');
+/* ==========================
+   1. RESET
+   ========================== */
+   *,
+   *::before, 
+   *::after {
+     box-sizing: border-box; 
+     margin:0;
+     padding:0;
+   }
+
+   img{
+    max-width: 100%;
+    height:auto;
+    display:block;
+   }
+   
+/* ==========================
+   2. DESIGN TOKENS
+   ========================== */
+:root{
+    --color-accent: #4d1979;
+    --color-accent-strong: #321052;
+    --color-text: #172033;
+    --color-muted: #657186;
+    --color-border: #d9dfeb;
+    --color-bg: #f7f8fb;
+    --color-surface: #ffffff;
+    /* spacing, type, radius, shadow tokens... */
+
+    /* Spacing */
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-button-y: 0.75rem;
+    --space-button-x: 1.25rem;
+
+    /* Typography */
+    --font-stack: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-serif: 'Lora', Georgia, serif;
+
+    --text-base: 1rem;
+    --text-h3: 1.25rem;
+    --text-h2: 1.5rem;
+    --text-h1: 2.25rem;
+
+    --leading-body: 1.6;
+    --leading-heading: 1.2;
+
+    /* Borders and shadows */
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
+    --shadow-card: 0 2px 8px rgba(0,0,0,0.04);
+
+    /* Layout */
+    --page-width: 64rem;
+    --reading-width: 70ch;}
+
+
+/* ==========================
+   3. BASE ELEMENT STYLES
+   ========================== */
+   body {
+    font-family: var(--font-serif);
+    /* ...existing Lab 05 declarations... */
+
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-size: var(--text-base);
+    line-height: var(--leading-body);}
+
+
+h1, h2, h3 {
+    font-family: var(--font-serif);
+    line-height: var(--leading-heading);
+}
+
+h1 { font-size: var(--text-h1); line-height: var(--leading-heading); }
+h2 { font-size: var(--text-h2); line-height: var(--leading-heading); }
+h3 { font-size: var(--text-h3); line-height: var(--leading-heading); }
+
+h1, h2, h3 { margin-bottom: var(--space-sm); }
+p { margin-bottom: var(--space-md); }
+p:last-child { margin-bottom: 0; }
+
+a { color: var(--color-accent); }
+ul { padding-left: var(--space-lg); }
+
+a:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
+/* ==========================
+   4. LAYOUT
+   Breakpoints used in this file:
+     768px  — tablet and larger
+   (CSS variables cannot be used inside @media conditions,
+    so breakpoints are documented here instead of tokenized.)
+   ========================== */ 
+   header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+    padding: var(--space-lg);
+    background-color: var(--color-surface-alt);
+    margin-bottom: var(--space-lg);
+    flex-wrap: wrap;
+}
+.about {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-lg);
+}
+.about-image {
+    flex: 0 0 150px;
+}
+
+.about-image img {
+    width: 150px;
+    height: 190px;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+}
+
+.about-text {
+    flex: 1;
+    min-width: 16rem;
+    max-width: var(--reading-width);
+}
+.header-text { flex: 1; min-width: 16rem; }
+.header-pic {
+    flex: 1;
+    background-color: var(--color-surface);
+    min-height: 18rem;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-muted);
+     min-width: 16rem;
+}
+nav {
+    padding: var(--space-md) 0;
+    margin-bottom: var(--space-lg);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.logo {
+    font-family: var(--font-serif);
+    font-size: var(--text-h3);
+    font-weight: 700;
+    color: var(--color-text);
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    gap: var(--space-lg);
+    align-items: center;
+}
+
+nav a {
+    color: var(--color-text);
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: var(--color-accent);
+}
+
+main section {
+    background-color: var(--color-surface);
+    padding: var(--space-xl);
+    margin-bottom: var(--space-xl);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+}
+
+main section h2 {
+    margin-bottom: var(--space-md);
+}
+#resources {
+    background-color: var(--color-surface);
+    padding: var(--space-xl);
+    margin-bottom: var(--space-xl);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+}
+   body {
+    max-width: var(--page-width);
+    margin: 0 auto;
+    padding: var(--space-lg) var(--space-md);
+}
+
+
+
+/* ==========================
+   5. Header
+   ========================== */
+
+/* ==========================
+   6. Sections
+   ========================== */
+/* ==========================
+   7. Forms
+   ========================== */
+/* ==========================
+   8. Buttons
+   ========================== */
+
+/* ==========================
+   9. Search
+   ========================== */
+
+/* ==========================
+  10. Cards
+   ========================== */
+   .favorites-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+}
+
+/* ==========================
+   11. Footer
+   ========================== */
+
+/* ==========================
+  12. Responsiveness
+   ========================== */ 
+    @media (min-width: 768px) {
+    .favorites-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+}
