@@ -22,12 +22,12 @@ console.log (placeName + ' ' + rating + '/5')
 console.log ('⭐️' .repeat(rating) + ' ' +placeName);
 
 function greetFavorite(placeName, rating) {
-    console.log (La La Land + ' has ' + rating + ' stars!');
+    console.log ('La La Land' + ' has ' + rating + ' stars!');
 }
 greetFavorite ('La La Land', 5); 
 
 const nameInput = document.getElementById ('name');
-console.log(nameInput.vale);
+console.log(nameInput.value);
 
 const practiceForm = document.getElementById ('add-favorite-form');
 function handleSubmit(event) {
