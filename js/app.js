@@ -5,8 +5,8 @@ let myFavorite = {
     notes: 'Great variety of drinks and the perfect stop for a pick me up with friends.',
     dateAdded:'September 2026'
 };
-
 console.log(myFavorite.name);
+
 let displayText = myFavorite.name + ' - Rating: ' + myFavorite.rating + '/5';
 console.log(displayText);
 
@@ -20,3 +20,19 @@ let placeName= 'La La Land';
 let rating = 5; 
 console.log (placeName + ' ' + rating + '/5')
 console.log ('⭐️' .repeat(rating) + ' ' +placeName);
+
+function greetFavorite(placeName, rating) {
+    console.log (La La Land + ' has ' + rating + ' stars!');
+}
+greetFavorite ('La La Land', 5); 
+
+const nameInput = document.getElementById ('name');
+console.log(nameInput.vale);
+
+const practiceForm = document.getElementById ('add-favorite-form');
+function handleSubmit(event) {
+    event.preventDefault();
+    console.log ('You typed: ' + nameInput.value);
+}
+
+practiceForm.addEventListener ('submit', handleSubmit);
