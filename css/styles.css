@@ -155,7 +155,14 @@ textarea {
 /* ==========================
    10. CARDS
    ========================== */
-.favorites-grid {
+.favorite-card {
+    padding: var(--space-lg);
+    background-color: var(--color-surface-alt);
+    border: none;
+    border-radius: var(--radius-md);
+    box-shadow: none;
+}
+   .favorites-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--space-lg);
