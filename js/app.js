@@ -1,3 +1,5 @@
+// This is beginning of the JS file
+
 let favorites = [];
 
 const form = document.getElementById('add-favorite-form');
@@ -5,7 +7,6 @@ const favoritesList = document.getElementById('favorites-list');
 
 const searchInput = document.getElementById('search-input');
 const categoryFilter = document.getElementById('category-filter');
-
 
 function addFavorite(event) {
     event.preventDefault();
@@ -27,12 +28,33 @@ function addFavorite(event) {
     };
 
     favorites.push(newFavorite);
+    saveFavorites();
     form.reset();
     displayFavorites();
 }
 
 
 form.addEventListener('submit', addFavorite);
+
+function saveFavorites() {
+    try {
+        localStorage.setItem('localFavorites', JSON.stringify(favorites));
+    } catch (error) {
+        alert('Unable to save favorites. Storage may be disabled.');
+    }
+}
+function loadFavorites() {
+    try {
+        const saved = localStorage.getItem('localFavorites');
+        if (saved) {
+            favorites = JSON.parse(saved);
+        } else {
+            favorites = [];
+        }
+    } catch (error) {
+        favorites = [];
+    }
+}
 
 function displayFavorites() {
     searchInput.value = '';
@@ -44,6 +66,7 @@ function deleteFavorite(index) {
     const favorite = favorites[index];
     if (confirm(`Delete "${favorite.name}"?`)) {
         favorites.splice(index, 1);   // remove 1 item at index
+        saveFavorites();
         searchFavorites();            // re-render, keeping current filter
     }
 }
@@ -63,16 +86,27 @@ function searchFavorites() {
         return matchesSearch && matchesCategory;
     });
 
+
 favoritesList.innerHTML = '';
 filtered.forEach(function(favorite) {
     const index = favorites.indexOf(favorite);
+    const stars = '⭐'.repeat(favorite.rating);
     favoritesList.innerHTML += `
         <div class="favorite-card">
-            <!-- the card contents from Lab 13.5 -->
+        <h3>${favorite.name}</h3>
+<span class="favorite-category">${favorite.category}</span>
+<div class="favorite-rating">${stars} (${favorite.rating}/5)</div>
+<p class="favorite-notes">${favorite.notes}</p>
+<p class="favorite-date">Added: ${favorite.dateAdded}</p>
             <button class="btn-danger" onclick="deleteFavorite(${index})">Delete</button>
         </div>`;
 });
+
 }
 
+
+
+
 // The last line in js/app.js
+loadFavorites();
 displayFavorites();
