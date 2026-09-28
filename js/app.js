@@ -7,6 +7,7 @@ const favoritesList = document.getElementById('favorites-list');
 
 const searchInput = document.getElementById('search-input');
 const categoryFilter = document.getElementById('category-filter');
+const selectedCategory = categoryFilter.value;
 
 function addFavorite(event) {
     event.preventDefault();
@@ -76,6 +77,8 @@ searchInput.addEventListener('input', searchFavorites);
 function searchFavorites() {
     const searchText = searchInput.value.toLowerCase().trim();
     const selectedCategory = categoryFilter.value;
+    const matchesCategory = selectedCategory === 'all' ||
+    favorite.category === selectedCategory;
     const filtered = favorites.filter(function(favorite) {
         const matchesSearch = searchText === '' ||
             favorite.name.toLowerCase().includes(searchText) ||
