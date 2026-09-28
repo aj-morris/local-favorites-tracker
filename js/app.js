@@ -86,22 +86,25 @@ function searchFavorites() {
         return matchesSearch && matchesCategory;
     });
 
-
-favoritesList.innerHTML = '';
-filtered.forEach(function(favorite) {
+    favoritesList.innerHTML = '';
+    if (filtered.length === 0) {
+        favoritesList.innerHTML = '<p class="empty-message"> No favorites have been added yet. Add your first one above!</p>';
+        return;
+    }
+    filtered.forEach(function(favorite) {
     const index = favorites.indexOf(favorite);
     const stars = '⭐'.repeat(favorite.rating);
     favoritesList.innerHTML += `
         <div class="favorite-card">
         <h3>${favorite.name}</h3>
-<span class="favorite-category">${favorite.category}</span>
-<div class="favorite-rating">${stars} (${favorite.rating}/5)</div>
-<p class="favorite-notes">${favorite.notes}</p>
-<p class="favorite-date">Added: ${favorite.dateAdded}</p>
+    <span class="favorite-category">${favorite.category}</span>
+    <div class="favorite-rating">${stars} (${favorite.rating}/5)</div>
+    <p class="favorite-notes">${favorite.notes}</p>
+    <p class="favorite-date">Added: ${favorite.dateAdded}</p>
             <button class="btn-danger" onclick="deleteFavorite(${index})">Delete</button>
         </div>`;
 });
-
+ 
 }
 
 
