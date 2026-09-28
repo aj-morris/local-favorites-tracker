@@ -14,10 +14,10 @@ function addFavorite(event) {
     const name = document.getElementById ('name').value.trim();
     const category = document.getElementById('category').value;
 
-    if (!name|| !category) {
-        alert('Please fill in name and category!');
-        return;
-    }
+   if (!name || !category) {
+    document.getElementById('form-error').textContent = ;
+    return;
+}
 
     const newFavorite = {
         name: name,
@@ -35,7 +35,6 @@ function addFavorite(event) {
 
 
 form.addEventListener('submit', addFavorite);
-
 function saveFavorites() {
     try {
         localStorage.setItem('localFavorites', JSON.stringify(favorites));
@@ -110,9 +109,6 @@ function searchFavorites() {
 });
  
 }
-
-
-
 
 // The last line in js/app.js
 loadFavorites();
