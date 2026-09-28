@@ -87,10 +87,14 @@ function searchFavorites() {
     });
 
     favoritesList.innerHTML = '';
-    if (filtered.length === 0) {
+    if (favorites.length === 0) {
         favoritesList.innerHTML = '<p class="empty-message"> No favorites have been added yet. Add your first one above!</p>';
         return;
+    } else if (filtered.length === 0) {  
+        favoritesList.innerHTML ='<p class="empty-message"> Nothing matches your search. </p>';
+        return;
     }
+
     filtered.forEach(function(favorite) {
     const index = favorites.indexOf(favorite);
     const stars = '⭐'.repeat(favorite.rating);
