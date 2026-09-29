@@ -7,7 +7,7 @@ const favoritesList = document.getElementById('favorites-list');
 
 const searchInput = document.getElementById('search-input');
 const categoryFilter = document.getElementById('category-filter');
-const selectedCategory = categoryFilter.value;
+const ratingFilter = document.getElementById('rating-filter');
 
 function addFavorite(event) {
     event.preventDefault();
@@ -16,7 +16,7 @@ function addFavorite(event) {
     const category = document.getElementById('category').value;
 
    if (!name || !category) {
-    document.getElementById('form-error').textContent = ;
+    document.getElementById('form-error').textContent = 'Error. Forgot to fill out completely. ' ;
     return;
 }
 
@@ -59,6 +59,7 @@ function loadFavorites() {
 function displayFavorites() {
     searchInput.value = '';
     categoryFilter.value = 'all';
+    ratingFilter.value = 'all';
     searchFavorites();
 }
 
@@ -72,20 +73,23 @@ function deleteFavorite(index) {
 }
 
 searchInput.addEventListener('input', searchFavorites);
-    categoryFilter.addEventListener('change', searchFavorites);
+categoryFilter.addEventListener('change', searchFavorites);
+ratingFilter.addEventListener ('change', searchFavorites);
 
 function searchFavorites() {
     const searchText = searchInput.value.toLowerCase().trim();
     const selectedCategory = categoryFilter.value;
-    const matchesCategory = selectedCategory === 'all' ||
-    favorite.category === selectedCategory;
+    const selectedRating = ratingFilter.value;
+   
     const filtered = favorites.filter(function(favorite) {
         const matchesSearch = searchText === '' ||
             favorite.name.toLowerCase().includes(searchText) ||
             favorite.notes.toLowerCase().includes(searchText);
         const matchesCategory = selectedCategory === 'all' ||
             favorite.category === selectedCategory;
-        return matchesSearch && matchesCategory;
+        const matchesRating = selectedRating === 'all' ||
+            favorite.rating === parseInt(selectedRating);
+              return matchesSearch && matchesCategory && matchesRating;
     });
 
     favoritesList.innerHTML = '';
