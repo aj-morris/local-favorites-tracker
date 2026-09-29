@@ -92,6 +92,8 @@ function searchFavorites() {
               return matchesSearch && matchesCategory && matchesRating;
     });
 
+   document.getElementById('favorites-matching').textContent = `You have ${filtered.length} favorite(s).`;
+    
     favoritesList.innerHTML = '';
     if (favorites.length === 0) {
         favoritesList.innerHTML = '<p class="empty-message"> No favorites have been added yet. Add your first one above!</p>';
