@@ -8,6 +8,7 @@ const favoritesList = document.getElementById('favorites-list');
 const searchInput = document.getElementById('search-input');
 const categoryFilter = document.getElementById('category-filter');
 const ratingFilter = document.getElementById('rating-filter');
+const favoritesClear = document.getElementById('favorites-clear');
 
 function addFavorite(event) {
     event.preventDefault();
@@ -72,9 +73,17 @@ function deleteFavorite(index) {
     }
 }
 
+function clearAllFavorites () {
+    if (confirm(`Are you sure you want to delete all favorites?`)) {
+        favorites = []; 
+        saveFavorites();
+        searchFavorites();
+    }}
+
 searchInput.addEventListener('input', searchFavorites);
 categoryFilter.addEventListener('change', searchFavorites);
 ratingFilter.addEventListener ('change', searchFavorites);
+favoritesClear.addEventListener ('click', clearAllFavorites);
 
 function searchFavorites() {
     const searchText = searchInput.value.toLowerCase().trim();
